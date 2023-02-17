@@ -37,6 +37,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('accounts.urls')),
     path('monitor/', include('monitor.urls')),
+    path('model/', include('model.urls')),
 ]
 
 if settings.DEBUG:

@@ -1,73 +1,82 @@
-import {React,useState,useRef,useEffect} from "react";
+import { useState } from "react";
 
+function Slider() {
+  const [value, setValue] = useState(500);
+  const [month, setMonth] = useState("");
+  const [totalSum, setTotalSum] = useState(0);
+  const [interestAmt, setInterestAmt] = useState(0);
 
+  const calculateInterest = () => {
+    const interestRate = 0.071; // 7.1% annual interest rate
+    const totalSavings = parseInt(totalSum) + parseInt(totalSum) * interestRate;
+    setInterestAmt(totalSavings - parseInt(totalSum));
+  };
 
+  const getBackgroundSize = () => {
+    return {
+      backgroundSize: `${(value * 100) / 150000}% 100%`,
+    };
+  };
 
- function Slider(){
-    const [value, setValue] = useState(500);
-    const [category,setCat] =useState('')
-    const previousValue = useRef(null);
-    const [maxValue, setMaxValue] = useState(150000);
-    
-    let currentSum = 0;
-    const getBackgroundSize = () => {
-	return {
-		backgroundSize: `${(value * 100) / maxValue}% 100%`,
-	};
-    }
-    function Dropdown() {
-        
-      
-        const handleOptionChange = (event) => {
-          setCat(event.target.value);
-        };
-        
-  
-        useEffect(() => {
-            if (previousValue.current === category) {
-              setMaxValue(maxValue - currentSum);
-            } else {
-              currentSum += parseInt(value);
-            }
-            previousValue.current = category;
-            setMaxValue(maxValue - currentSum);
-          }, [category, value, maxValue]);
+  const handleMonthChange = (event) => {
+    setMonth(event.target.value);
+  };
 
-        return (
-          <div>
-            <select label= 'category' value={category} onChange={handleOptionChange}>
-              <option value="Jan" >Jan</option>
-              <option value="Feb" >Feb</option>
-              <option value="March" >March</option>
-            </select>
-            <p>Selected Month: {category}</p>
-          </div>
-        );
-      }
+  const handleSliderChange = (event) => {
+    setValue(event.target.value);
+  };
 
-      const amount = currentSum+currentSum*0.071;
-    return(
+  const handleCalculation = (event) => {
+    event.preventDefault();
+    setTotalSum(value * parseInt(month));
+    calculateInterest();
+  };
+
+  return (
+    <div>
+      <form onSubmit={handleCalculation}>
         <div>
-            <form>
-            <div className='Dropdown'>
-                            <Dropdown></Dropdown>
-                        </div>      
-            
-               <input 
-                type="range"
-                min="500"
-                step="10"
-                max={maxValue}
-                onChange={(e) => setValue(e.target.value)}
-                style={getBackgroundSize()}
-                value={value}
-                />
-                <h1>{value}</h1>
-                <button type="submit">Calculate</button>
-                <h2>{amount}</h2>
-            </form>
+          <label htmlFor="month">Select Month:</label>
+          <select id="month" value={month} onChange={handleMonthChange}>
+            <option value="">Select a month</option>
+            <option value="1">January</option>
+            <option value="2">February</option>
+            <option value="3">March</option>
+            <option value="4">April</option>
+            <option value="5">May</option>
+            <option value="6">June</option>
+            <option value="7">July</option>
+            <option value="8">August</option>
+            <option value="9">September</option>
+            <option value="10">October</option>
+            <option value="11">November</option>
+            <option value="12">December</option>
+          </select>
         </div>
-    
-    )
+        <div>
+          <label htmlFor="range">Select Amount:</label>
+          <input
+            type="range"
+            id="range"
+            name="range"
+            min="500"
+            max="150000"
+            step="10"
+            value={value}
+            onChange={handleSliderChange}
+            style={getBackgroundSize()}
+          />
+        </div>
+        <div>
+          <button type="submit">Calculate</button>
+        </div>
+        <div>
+          <p>Total Sum: {totalSum}</p>
+          <p>Interest Amount: {interestAmt}</p>
+        </div>
+      </form>
+    </div>
+  );
 }
+
 export default Slider;

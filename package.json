@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@emotion/react": "^11.10.6",
+    "@emotion/styled": "^11.10.6",
+    "@mui/material": "^5.11.9",
     "@react-three/drei": "^9.56.25",
     "@react-three/fiber": "^8.11.1",
     "@testing-library/jest-dom": "^5.16.5",
@@ -12,6 +15,7 @@
     "drei": "^2.2.21",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-icons": "^4.7.1",
     "react-router-dom": "^6.8.1",
     "react-scripts": "5.0.1",
     "react-three-fiber": "^6.0.13",

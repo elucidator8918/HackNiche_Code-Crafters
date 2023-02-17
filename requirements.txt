@@ -1,0 +1,7 @@
+django==4.1
+djangorestframework
+djangorestframework-simplejwt
+django-phonenumber-field[phonenumberslite]
+pillow
+drf-yasg
+python-decouple

@@ -1,16 +1,18 @@
-import {React,useState} from "react";
+import {React,useState,useRef,useEffect} from "react";
 
 
 
 
  function Slider(){
-    const [value, setValue] = useState(0);
+    const [value, setValue] = useState(500);
     const [category,setCat] =useState('')
-    const MAX = 10;
-    let currentSum =0;
+    const previousValue = useRef(null);
+    const [maxValue, setMaxValue] = useState(150000);
+    
+    let currentSum = 0;
     const getBackgroundSize = () => {
 	return {
-		backgroundSize: `${(value * 100) / MAX}% 100%`,
+		backgroundSize: `${(value * 100) / maxValue}% 100%`,
 	};
     }
     function Dropdown() {
@@ -19,7 +21,18 @@ import {React,useState} from "react";
         const handleOptionChange = (event) => {
           setCat(event.target.value);
         };
-             
+        
+  
+        useEffect(() => {
+            if (previousValue.current === category) {
+              setMaxValue(maxValue - currentSum);
+            } else {
+              currentSum += parseInt(value);
+            }
+            previousValue.current = category;
+            setMaxValue(maxValue - currentSum);
+          }, [category, value, maxValue]);
+
         return (
           <div>
             <select label= 'category' value={category} onChange={handleOptionChange}>
@@ -31,21 +44,27 @@ import {React,useState} from "react";
           </div>
         );
       }
-   
+
+      const amount = currentSum+currentSum*0.071;
     return(
         <div>
             <form>
             <div className='Dropdown'>
                             <Dropdown></Dropdown>
-                        </div>  
-                <input 
+                        </div>      
+            
+               <input 
                 type="range"
-                min="0"
-                max={MAX}
+                min="500"
+                step="10"
+                max={maxValue}
                 onChange={(e) => setValue(e.target.value)}
                 style={getBackgroundSize()}
                 value={value}
                 />
+                <h1>{value}</h1>
+                <button type="submit">Calculate</button>
+                <h2>{amount}</h2>
             </form>
         </div>
     

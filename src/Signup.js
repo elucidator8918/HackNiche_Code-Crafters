@@ -15,9 +15,6 @@ function Signup() {
 
   return (
     <div className="signup">
-        <Canvas className="canvas">
-            <Stars/>
-      </Canvas>
       <div className='form-wrapper'>
         <form onSubmit={handleSignup}>
             <h2>Sign Up</h2>

@@ -5,3 +5,4 @@ django-phonenumber-field[phonenumberslite]
 pillow
 drf-yasg
 python-decouple
+django-cors-headers

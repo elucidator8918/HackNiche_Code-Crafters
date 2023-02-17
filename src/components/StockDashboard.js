@@ -10,8 +10,8 @@ function Lowrisk(){
         const [showCipla, setShowCipla] = useState(false);
         const [showAbbott, setShowAbbott] = useState(false);
         const [duration,setDuration] =useState('')
-        const [money,setMoney] =useState('')
-        const[Amt,setAmt] = useState('')
+        const [money,setMoney] =useState(0)
+        const[Amt,setAmt] = useState(0)
         const handleBajajClick =()=>{
           setShowBajaj(true)
         }
@@ -208,6 +208,7 @@ const HighRiskButton = () => {
   }
   const handleMoney =(e) =>{
     setMoney(e.target.value)
+    console.log(money)
   }
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -219,11 +220,10 @@ const HighRiskButton = () => {
       const response = await axios.post('http://127.0.0.1:8000/model/model-set/', formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
-      console.log(response.data.pred);
+      console.log(response);
       const stockAmount = response.data.pred * money;
-      console.log(money);
-      setAmt(stockAmount);
       console.log(stockAmount)
+      setAmt(stockAmount);
     } catch (error) {
       console.log(error);
     }
@@ -239,28 +239,28 @@ const HighRiskButton = () => {
             {showBajaj&&(<form>
                 
                 <input type='text' placeholder='Duration' onChange={handleDuration}></input>
-                <input type='number' placeholder='Money'></input>
+                <input type='text' placeholder='Money' onChange={handleMoney}></input>
                 <button type = 'submit' onClick={handleSubmit}> submit</button>
             </form>)}
             <button onClick={handleHindustanClick}>Hindustan</button>
             {showHindustan&&(<form>
                 
                 <input type='text' placeholder='Duration' onChange={handleDuration}></input>
-                <input type='number' placeholder='Money'onChange={handleMoney}></input>
+                <input type='text' placeholder='Money'onChange={handleMoney}></input>
                 <button type = 'submit'> submit</button>
             </form>)}
             <button onClick={handleCiplaClick}>Cipla</button>
             {showCipla&&(<form>
                 
                 <input type='text' placeholder='Duration' onChange={handleDuration}></input>
-                <input type='number' placeholder='Money' onChange={handleMoney}></input>
+                <input type='text' placeholder='Money' onChange={handleMoney}></input>
                 <button type = 'submit'> submit</button>
             </form>)}
             <button onClick={handleAbbottClick}>ABBOTT</button>
             {showAbbott&&(<form>
                 
                 <input type='text' placeholder='Duration' onChange={handleDuration}></input>
-                <input type='number' placeholder='Money' onChange={handleMoney}></input>
+                <input type='text' placeholder='Money' onChange={handleMoney}></input>
                 <button type = 'submit'> submit</button>
             </form>)}
             <h1>{Amt}</h1>

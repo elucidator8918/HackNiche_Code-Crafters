@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios'
 import Lowstock from './Lowstock'
-
-
+import bajaj from './BajajHighrisk.jpeg'
 
 export default function StockDashboard(){
     // const [selectedOptions, setSelectedOptions] = useState([]);
@@ -158,6 +157,7 @@ const HighRiskButton = () => {
                 <input type='text' placeholder='Duration' onChange={handleDuration}></input>
                 <input type='text' placeholder='Stocks' onChange={handleMoney}></input>
                 <button type = 'submit' onClick={handleSubmit}> submit</button>
+                <img src={bajaj} className="img-styling"></img>
             </form>)}
             <button onClick={handleHindustanClick}>Hindustan</button>
             {showHindustan&&(<form>

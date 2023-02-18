@@ -1,5 +1,6 @@
 import React,{useState} from 'react';
 import axios from 'axios';
+import infosysis from './Infosyslowrisk.jpeg';
 import './Lowstock.css';
 export default function Lowrisk(){
     const LowRiskButton = () => {
@@ -40,7 +41,7 @@ export default function Lowrisk(){
         const handleSubmit = async(event) => {
           event.preventDefault()
         const formData = new FormData();
-          formData.append("compony", "Infosys");
+          formData.append("compony", company);
           formData.append("duration",duration);
          
           try {
@@ -68,6 +69,7 @@ export default function Lowrisk(){
                       <input type='text' placeholder='Duration' onChange={handleDuration}></input>
                       <input type='text' placeholder='Money' onChange={handleMoney}></input>
                       <button type = 'submit' onClick={handleSubmit}> submit</button>
+                      <img src={infosysis} className="img-styling"></img>
                   </form>)}
                   <button onClick={handlekotakClick}>kotak</button>
                   {showkotak&&(<form>

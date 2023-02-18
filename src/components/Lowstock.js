@@ -8,19 +8,24 @@ export default function Lowrisk(){
         const [showHDFC, setShowHDFC] = useState(false);
         const [showHCLTECH, setShowHCLTECH] = useState(false);
         const [duration,setDuration] =useState('')
+        const [company,setCompany] = useState('')
         const [money,setMoney] =useState(0)
         const[Amt,setAmt] = useState(0)
         const handleInfosysClick =()=>{
-          setShowInfosys(true)
+          setShowInfosys(!showInfosys)
+          setCompany('infosys')
         }
         const handlekotakClick =()=>{
-          setShowkotak(true)
+          setShowkotak(!showkotak)
+          setCompany('kotak')
         }
         const handleHDFCClick =()=>{
-          setShowHDFC(true)
+          setShowHDFC(!showHDFC)
+          setCompany('HDFC')
         }
         const handleHCLTECHClick =()=>{
-          setShowHCLTECH(true)
+          setShowHCLTECH(!showHCLTECH)
+          setCompany('HCLTECH')
         }
         const handleButtonClick = () => {
           setShowNav(true);
@@ -68,23 +73,23 @@ export default function Lowrisk(){
                       
                       <input type='text' placeholder='Duration' onChange={handleDuration}></input>
                       <input type='text' placeholder='Money'onChange={handleMoney}></input>
-                      <button type = 'submit'> submit</button>
+                      <button type = 'submit' onClick={handleSubmit}> submit</button>
                   </form>)}
                   <button onClick={handleHDFCClick}>HDFC</button>
                   {showHDFC&&(<form>
                       
                       <input type='text' placeholder='Duration' onChange={handleDuration}></input>
                       <input type='text' placeholder='Money' onChange={handleMoney}></input>
-                      <button type = 'submit'> submit</button>
+                      <button type = 'submit'onClick={handleSubmit}> submit</button>
                   </form>)}
                   <button onClick={handleHCLTECHClick}>HCLTECH</button>
                   {showHCLTECH&&(<form>
                       
                       <input type='text' placeholder='Duration' onChange={handleDuration}></input>
                       <input type='text' placeholder='Money' onChange={handleMoney}></input>
-                      <button type = 'submit'> submit</button>
+                      <button type = 'submit'onClick={handleSubmit}> submit</button>
                   </form>)}
-                  <h1>{Amt}</h1>
+                  <h1>Forecasted Amount for this company:{Amt}</h1>
                 </ul>
               </nav>
             )}

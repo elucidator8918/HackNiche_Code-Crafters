@@ -98,22 +98,27 @@ const HighRiskButton = () => {
   const [showCipla, setShowCipla] = useState(false);
   const [showAbbott, setShowAbbott] = useState(false);
   const [duration,setDuration] =useState('')
+  const [company,setCompany] = useState('')
   const [money,setMoney] =useState(0)
   const[Amt,setAmt] = useState(0)
   const handleBajajClick =()=>{
-    setShowBajaj(true)
+    setShowBajaj(!showBajaj)
+    setCompany('Bajaj')
   }
   const handleHindustanClick =()=>{
-    setShowHindustan(true)
+    setShowHindustan(!showHindustan)
+    setCompany('Hindu')
   }
   const handleCiplaClick =()=>{
-    setShowCipla(true)
+    setShowCipla(!showCipla)
+    setCompany('CIPLA')
   }
   const handleAbbottClick =()=>{
-    setShowAbbott(true)
+    setShowAbbott(!showAbbott)
+    setCompany('ABBOTT')
   }
   const handleButtonClick = () => {
-    setShowNav(true);
+    setShowNav(!showNav);
   }
   const handleDuration =(e) =>{
     setDuration(e.target.value)
@@ -125,7 +130,7 @@ const HighRiskButton = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData();
-    formData.append('compony', 'Bajaj');
+    formData.append('compony', company);
     formData.append('duration', duration);
 
     try {
@@ -151,31 +156,31 @@ const HighRiskButton = () => {
             {showBajaj&&(<form>
                 
                 <input type='text' placeholder='Duration' onChange={handleDuration}></input>
-                <input type='text' placeholder='Money' onChange={handleMoney}></input>
+                <input type='text' placeholder='Stocks' onChange={handleMoney}></input>
                 <button type = 'submit' onClick={handleSubmit}> submit</button>
             </form>)}
             <button onClick={handleHindustanClick}>Hindustan</button>
             {showHindustan&&(<form>
                 
                 <input type='text' placeholder='Duration' onChange={handleDuration}></input>
-                <input type='text' placeholder='Money'onChange={handleMoney}></input>
-                <button type = 'submit'> submit</button>
+                <input type='text' placeholder='Stocks'onChange={handleMoney}></input>
+                <button type = 'submit' onClick={handleSubmit}> submit</button>
             </form>)}
             <button onClick={handleCiplaClick}>Cipla</button>
             {showCipla&&(<form>
                 
                 <input type='text' placeholder='Duration' onChange={handleDuration}></input>
-                <input type='text' placeholder='Money' onChange={handleMoney}></input>
-                <button type = 'submit'> submit</button>
+                <input type='text' placeholder='Stocks' onChange={handleMoney}></input>
+                <button type = 'submit' onClick={handleSubmit}> submit</button>
             </form>)}
             <button onClick={handleAbbottClick}>ABBOTT</button>
             {showAbbott&&(<form>
                 
                 <input type='text' placeholder='Duration' onChange={handleDuration}></input>
-                <input type='text' placeholder='Money' onChange={handleMoney}></input>
-                <button type = 'submit'> submit</button>
+                <input type='text' placeholder='Stocks' onChange={handleMoney}></input>
+                <button type = 'submit' onClick={handleSubmit}> submit</button>
             </form>)}
-            <h1>{Amt}</h1>
+            <h1>Forecasted Amount for this company:{Amt}</h1>
           </ul>
         </nav>
       )}

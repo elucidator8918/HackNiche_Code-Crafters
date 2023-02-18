@@ -1,5 +1,6 @@
 import React,{useState} from 'react';
 import axios from 'axios';
+import infosysis from './Infosyslowrisk.jpeg';
 import './Lowstock.css';
 import infosysis from './Infosyslowrisk.jpeg';
 
@@ -42,7 +43,7 @@ export default function Lowrisk(){
         const handleSubmit = async(event) => {
           event.preventDefault()
         const formData = new FormData();
-          formData.append("compony", "Infosys");
+          formData.append("compony", company);
           formData.append("duration",duration);
          
           try {

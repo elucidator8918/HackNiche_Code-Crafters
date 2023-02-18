@@ -2,7 +2,10 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios'
 import Lowstock from './Lowstock'
 import bajaj from './BajajHighrisk.jpeg'
+<<<<<<< HEAD
 
+=======
+>>>>>>> f6afa18e89b2f65459a3ed59a1cdde1edd63d28a
 
 export default function StockDashboard(){
     // const [selectedOptions, setSelectedOptions] = useState([]);

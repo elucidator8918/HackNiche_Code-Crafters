@@ -24,7 +24,7 @@ export default function AddExpenseModal({
 
   return (
     <Modal show={show} onHide={handleClose}>
-      <Form onSubmit={handleSubmit}>
+      <Form onSubmit={handleSubmit} className="w-50">
         <Modal.Header closeButton>
           <Modal.Title>New Expense</Modal.Title>
         </Modal.Header>

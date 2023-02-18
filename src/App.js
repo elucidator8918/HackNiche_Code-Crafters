@@ -10,18 +10,21 @@ import budgeting from './assets/budgeting.jpg';
 import investment_portfolio from './assets/investment-portfolio.jpg';
 import financial_goals from './assets/financial-goals.jpg';
 import {BrowserRouter as Router, Route,Routes} from 'react-router-dom';
+import 'tailwindcss/tailwind.css'
 
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Budget from './pages/Budget';
 import Savings from './pages/Savings';
+import Sliders from './pages/Sliders';
+
 // import Signup from './components/Signup';
-const navbarLinks=[{url:"#",title:"Home"},{url:"#",title:"Budgeting"},{url:"#",title:"Savings"},{url:"#",title:"Investing"},{url:"#",title:"Insurance"}]
+const navbarLinks=[{url:"/",title:"Home"},{url:"/Budget",title:"Budgeting"},{url:"https://savingshackniche.netlify.app/",title:"Saving Schemes"},{url:"https://insuranceplans.netlify.app/",title:"Insurance"},{url:"/Login",title:"Stock Recommendation"},{url:"/Signup",title:"SignIn"},{url:"/Login",title:"Log In"}]
 function Landing()  {
   return (
     <div className="App">
       <Navbar navbarLinks={navbarLinks}/>
-      <Hero imageSrc={main_01}/>
+      <Hero imageSrc={financial_01}/>
       <Slider imageSrc={budgeting} title={"Budgeting"} subtitle={"Our AI-powered budgeting tool helps you keep track of your finances and stay on top of your spending."}/>
       <Slider imageSrc={expense_tracking} title={"Expense Tracking"} subtitle={"Track your expenses and easily see where your money is going."} flipped={true}/>
       <Slider imageSrc={investment_portfolio} title={"Investment Portfolio Management"} subtitle={"Maximize your investments with our AI-powered portfolio management tools."}/>
@@ -39,7 +42,9 @@ function App(){
           <Route path="/Signup" element={<Signup/>} />
           <Route path="/Login" element={<Login/>} />
           <Route path="/Budget" element={<Budget/>}/>
+          <Route path="/dashboard" element={<index/>}/>
           <Route path="/Savings" element={<Savings/>}/>
+
         </Routes>
       </Router>
     </div>

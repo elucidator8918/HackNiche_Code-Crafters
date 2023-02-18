@@ -4,7 +4,7 @@ import Signup from './Signup';
 import './Signup.css';
 import Slider from './components/Slider';
 import StockDashboard from './components/StockDashboard';
-
+import FAQ from './components/FAQ';
 
 
 function App() {
@@ -15,6 +15,7 @@ function App() {
           <Route path='/' element={<Signup/>}/>
           <Route path='/StockDashboard' element={<StockDashboard/>}/>
           <Route path='/slider' element={<Slider/>}/>
+          <Route path='/faq' element={<FAQ/>}/>
         </Routes>
       
       </BrowserRouter>

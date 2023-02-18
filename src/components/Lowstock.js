@@ -1,5 +1,6 @@
 import React,{useState} from 'react';
 import axios from 'axios';
+import './Lowstock.css';
 export default function Lowrisk(){
     const LowRiskButton = () => {
         const [showNav, setShowNav] = useState(false);

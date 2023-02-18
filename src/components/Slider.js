@@ -1,4 +1,5 @@
 import { useState } from "react";
+import './ppf.css';
 
 function Slider() {
   const [value, setValue] = useState(500);
@@ -33,7 +34,7 @@ function Slider() {
   };
 
   return (
-    <div>
+    <div className="container">
       <form onSubmit={handleCalculation}>
         <div>
           <label htmlFor="month">Select Month:</label>
@@ -66,6 +67,7 @@ function Slider() {
             onChange={handleSliderChange}
             style={getBackgroundSize()}
           />
+          {value}
         </div>
         <div>
           <button type="submit">Calculate</button>

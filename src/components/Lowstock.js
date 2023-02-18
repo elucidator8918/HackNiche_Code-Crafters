@@ -1,6 +1,8 @@
 import React,{useState} from 'react';
 import axios from 'axios';
 import './Lowstock.css';
+import infosysis from './Infosyslowrisk.jpeg';
+
 export default function Lowrisk(){
     const LowRiskButton = () => {
         const [showNav, setShowNav] = useState(false);
@@ -68,6 +70,7 @@ export default function Lowrisk(){
                       <input type='text' placeholder='Duration' onChange={handleDuration}></input>
                       <input type='text' placeholder='Money' onChange={handleMoney}></input>
                       <button type = 'submit' onClick={handleSubmit}> submit</button>
+                      <img src={infosysis} className="img-styling"></img>
                   </form>)}
                   <button onClick={handlekotakClick}>kotak</button>
                   {showkotak&&(<form>

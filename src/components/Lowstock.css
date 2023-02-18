@@ -77,4 +77,9 @@ button {
   button {
     background: linear-gradient(to bottom, #4CAF50 0%, #2E8B57 100%);
   }
-  
+  .img-styling{
+    width: 100%;
+    height: 100%;
+    float: right;
+    object-fit: cover;
+  }
